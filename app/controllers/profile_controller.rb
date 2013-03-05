@@ -5,7 +5,8 @@ class ProfileController < ApplicationController
   @@profiler = Profiler.new
 
   def index
-    @started = profiler.started?
+    @started = profiler.should_run?
+    @nodes = profiler.nodes
   end
 
   def start
