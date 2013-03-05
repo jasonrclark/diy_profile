@@ -18,6 +18,7 @@ class ProfilerTest < Test::Unit::TestCase
     2.times do
       set_to_profile(1)
       run_profiler
+      profiler.stop
     end
 
     assert_equal 2, profiler.sample_count

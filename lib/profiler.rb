@@ -21,7 +21,6 @@ class Profiler
         take_sample
         sleep(@interval)
       end
-      stop
     end
   end
 
