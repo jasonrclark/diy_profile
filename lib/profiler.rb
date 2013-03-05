@@ -1,11 +1,11 @@
 class Profiler
-  attr_reader :thread, :sample_count, :nodes
+  attr_reader :sample_count, :calls
 
   def initialize(interval = 0.1)
     @interval = interval
     @running = false
     @sample_count = 0
-    @nodes = Hash.new(0)
+    @calls = Hash.new(0)
   end
 
   def should_run?
@@ -13,12 +13,15 @@ class Profiler
   end
 
   def start
+    return if @running
     @running = true
-    @thread ||= Thread.new do
+
+    Thread.new do
       while should_run?
         take_sample
         sleep(@interval)
       end
+      stop
     end
   end
 
@@ -37,13 +40,11 @@ class Profiler
   end
 
   def count_backtrace_line(line)
-    @nodes[key(line)] += 1
+    @calls[key(line)] += 1
   end
 
   BACKTRACE_LINE_REGEX = /(.*)\:(\d+)\:in `(.*)'/
-
   def key(line)
     BACKTRACE_LINE_REGEX.match(line).captures
   end
-
 end
