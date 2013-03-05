@@ -5,6 +5,24 @@
   <%= link_to "start", profile_start_url %> (<b>not running</b>)
 <% end %>
 
-<br /><br />
+<br />
+Samples taken: <%= @sample_count %>
+<br />
+<br />
 
-<%= @nodes.inspect %>
+<table border="1">
+  <tr>
+    <th>Count</th>
+    <th>File</th>
+    <th>Method</th>
+    <th>Line</th>
+  </tr>
+<% for call in @calls %>
+  <tr>
+    <td><%= call[1] %></td>
+    <td><%= clean_file(call[0][0]) %></td>
+    <td><%= clean_method(call[0][2]) %></td>
+    <td><%= call[0][1] %></td>
+  </tr>
+<% end %>
+</table>

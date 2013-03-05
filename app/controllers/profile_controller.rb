@@ -6,7 +6,10 @@ class ProfileController < ApplicationController
 
   def index
     @started = profiler.should_run?
-    @nodes = profiler.nodes
+    @calls = profiler.calls.
+                sort_by {|_,v| v}.
+                reverse
+    @sample_count = profiler.sample_count
   end
 
   def start
