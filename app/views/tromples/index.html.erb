@@ -1,0 +1,27 @@
+<h1>TROMPLES!</h1>
+
+<%= link_to 'TROMP!', '/tromp' %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Intensity</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tromples.each do |tromple| %>
+  <tr>
+    <td><%= tromple.name %></td>
+    <td><%= tromple.intensity %></td>
+    <td><%= link_to 'Show', tromple %></td>
+    <td><%= link_to 'Edit', edit_tromple_path(tromple) %></td>
+    <td><%= link_to 'Destroy', tromple, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tromple', new_tromple_path %>
