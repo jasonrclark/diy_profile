@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @trompler.name %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @trompler.title %>
+</p>
+
+<p>
+  <b>Age:</b>
+  <%= @trompler.age %>
+</p>
+
+
+<%= link_to 'Edit', edit_trompler_path(@trompler) %> |
+<%= link_to 'Back', tromplers_path %>

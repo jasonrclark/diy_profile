@@ -1,0 +1,27 @@
+<h1>Listing tromplers</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Title</th>
+    <th>Age</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tromplers.each do |trompler| %>
+  <tr>
+    <td><%= trompler.name %></td>
+    <td><%= trompler.title %></td>
+    <td><%= trompler.age %></td>
+    <td><%= link_to 'Show', trompler %></td>
+    <td><%= link_to 'Edit', edit_trompler_path(trompler) %></td>
+    <td><%= link_to 'Destroy', trompler, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Trompler', new_trompler_path %>

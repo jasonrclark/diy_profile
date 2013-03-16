@@ -9,4 +9,5 @@ DiyProfile::Application.routes.draw do
   resources :tromples
   get "tromp" => "tromples#tromp"
 
+  resources :tromplers
 end
