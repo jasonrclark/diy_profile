@@ -8,4 +8,19 @@ module ProfileHelper
     return method if method.length < 30
     method[0,10] + "..." + method[-10,10]
   end
+
+  def toggle_link(param)
+    u = URI.parse(request.url)
+    p = request.query_parameters.dup
+    if p[param].nil?
+      p[param] = "1"
+      prefix = "hide"
+    else
+      p.delete(param)
+      prefix = "show"
+    end
+
+    u.query = p.to_query
+    link_to "#{prefix} #{param}", u.to_s
+  end
 end
