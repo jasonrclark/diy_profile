@@ -21,6 +21,6 @@ module ProfileHelper
     end
 
     u.query = p.to_query
-    link_to "#{prefix} #{param}", u.to_s
+    link_to "#{prefix} #{param}", u.to_s, :class => "btn"
   end
 end

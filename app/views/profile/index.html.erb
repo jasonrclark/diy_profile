@@ -1,19 +1,20 @@
 <h1>DIY::Thread.profile</h1>
 <% if @started %>
-  <%= link_to "stop", profile_stop_url(:params => request.query_parameters) %> (<b>running</b>)
+  <%= link_to "stop", profile_stop_url(:params => request.query_parameters), :class => "btn" %>
+  (<b>running</b>, sampled <%= @sample_count %> times)
 <% else %>
-  <%= link_to "start", profile_start_url(:params => request.query_parameters) %> (<b>not running</b>)
+  <%= link_to "start", profile_start_url(:params => request.query_parameters), :class => "btn" %>
+  (<b>not running</b>, sampled <%= @sample_count %> times)
 <% end %>
-
-<br />
-Samples taken: <%= @sample_count %>
 <br />
 <br />
 
 <%= toggle_link("framework")%>
 <%= toggle_link("profiler")%>
+<br />
+<br />
 
-<table border="1">
+<table class="table table-bordered table-striped">
   <tr>
     <th>Count</th>
     <th>File</th>
