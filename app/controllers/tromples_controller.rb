@@ -2,17 +2,12 @@ class TromplesController < ApplicationController
 
   # Purposefully heavy action for generating interesting load
   def tromp
-    start = Time.now
     fib(30)
-    fib_duration = Time.now - start
-
-    start = Time.now
     n_plus_one_much?
-    database_duration = Time.now - start
 
     # Record our tromp and get out...
     Tromple.create!({
-      :name => "TROMP TROMP TROMP #{fib_duration}, #{database_duration}",
+      :name => "TROMP TROMP TROMP",
       :intensity => 11})
 
     redirect_to :action => :index
