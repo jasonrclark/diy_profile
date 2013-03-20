@@ -5,14 +5,16 @@ class ProfileController < ApplicationController
   @@profiler = Profiler.new
 
   FRAMEWORK_PATH = /\/lib\/ruby\//
+  SCRIPT_RAILS_PATH = /script\/rails/
   PROFILER_PATH  = /\/diy_profile\/lib\/profiler\.rb/
 
   def index
     @started = profiler.should_run?
 
     calls = profiler.calls
-    calls = filter_calls(calls, FRAMEWORK_PATH, "framework")
-    calls = filter_calls(calls, PROFILER_PATH,  "profiler")
+    calls = filter_calls(calls, FRAMEWORK_PATH,    "framework")
+    calls = filter_calls(calls, SCRIPT_RAILS_PATH, "framework")
+    calls = filter_calls(calls, PROFILER_PATH,     "profiler")
     @calls = calls.sort_by {|_,v| v}.reverse
 
     @sample_count = profiler.sample_count
